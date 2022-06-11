@@ -1,4 +1,6 @@
+require("dotenv").config({ path: "../.env" });
 const { Sequelize } = require("sequelize");
+
 const db = new Sequelize(
     "discord_jobs",
     process.env.POSTGRES_USER,
