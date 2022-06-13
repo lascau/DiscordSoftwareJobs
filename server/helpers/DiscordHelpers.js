@@ -2,6 +2,9 @@ require("dotenv").config({ path: "../.env" });
 
 const axios = require("axios");
 
+// endpoint for getting avatar
+// https://cdn.discordapp.com/avatars/author_id/avatar_id.png?size=160
+
 const getJobsbyChannel = (channel_id, limit = 1) => {
     let jobs = [];
     let job = {};
