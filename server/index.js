@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const jobs_routes = require("./routes/jobs");
+const background_tasks = require("./helpers/DiscordHelpers.js");
 const app = express();
 require("dotenv").config({ path: "../.env" });
 const port = process.env.PORT_SERVER;
@@ -18,6 +19,14 @@ db.authenticate()
         console.log("Error: " + err);
     });
 
+/*
+setInterval(() => {
+    //Reactiflux
+    //background_tasks.getJobsbyChannel(103882387330457600);
+    background_tasks.getJobsbyChannel(755177988533780480);
+    //
+}, 1000);
+*/
 // Home
 app.get("/", (req, res) => {
     res.send("<h1>hello world</h1>");
