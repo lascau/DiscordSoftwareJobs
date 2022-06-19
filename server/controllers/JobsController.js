@@ -134,10 +134,24 @@ const fetchAllJobs = (req, res) => {
         });
 };
 
+const streamNotifyNewJobs = (req, res) => {
+    res.writeHead(200, {
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache",
+        "Connection": "keep-alive",
+    });
+    
+    setInterval(() => {
+        res.write("data: {newJobs: true}");
+        res.write("\n\n");
+    }, 5000);
+};
+
 module.exports = {
     createJob,
     updateJob,
     deleteJob,
     fetchJob,
     fetchAllJobs,
+    streamNotifyNewJobs,
 };

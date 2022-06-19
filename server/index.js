@@ -19,14 +19,15 @@ db.authenticate()
         console.log("Error: " + err);
     });
 
-/*
 setInterval(() => {
     //Reactiflux
-    //background_tasks.getJobsbyChannel(103882387330457600);
-    background_tasks.getJobsbyChannel(755177988533780480);
+    let areNewJobs = background_tasks.getJobsbyChannel(103882387330457600);
+    areNewJobs.then(are_jobs => console.log(are_jobs))
+    //console.log("------>$$$", areNewJobs.then(job => console.log(job)));
+    //background_tasks.getJobsbyChannel(755177988533780480);
     //
-}, 1000);
-*/
+}, 3000);
+
 // Home
 app.get("/", (req, res) => {
     res.send("<h1>hello world</h1>");
