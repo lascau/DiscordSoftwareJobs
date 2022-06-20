@@ -6,8 +6,6 @@ const axios = require("axios");
 // https://cdn.discordapp.com/avatars/author_id/avatar_id.png?size=160
 
 const getJobsbyChannel = async (channel_id, limit = 1) => {
-    let jobs = [];
-    let job = {};
     const headers = {
         "Content-Type": "application/json",
         authorization: process.env.DISCORD_AUTHORIZATION,
@@ -37,7 +35,5 @@ const getJobsbyChannel = async (channel_id, limit = 1) => {
         });
     return areNewJobs;
 };
-
-//getJobsbyChannel("426384543818448896");
 
 exports.getJobsbyChannel = getJobsbyChannel;

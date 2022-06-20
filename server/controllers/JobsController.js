@@ -1,4 +1,6 @@
 const Job = require("../models/Job");
+const background_tasks = require("../helpers/DiscordHelpers");
+require("dotenv").config({ path: "../.env" });
 
 const createJob = async (req, res) => {
     // Validate request
@@ -142,8 +144,11 @@ const streamNotifyNewJobs = (req, res) => {
     });
     
     setInterval(() => {
-        res.write("data: {newJobs: true}");
-        res.write("\n\n");
+        const areNewJobs = background_tasks.getJobsbyChannel(process.env.REACTIFLUX_JOB_BOARD_SERVER_ID);
+        areNewJobs.then(areJobs => {
+            res.write(`data: ${areJobs}`);
+            res.write("\n\n");
+        })
     }, 5000);
 };
 

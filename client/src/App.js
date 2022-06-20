@@ -8,6 +8,16 @@ const serverBaseURL = "http://localhost:3006/api/v1/jobs";
 function App() {
     const [jobs, setJobs] = useState([]);
 
+    const getAllJobs = () => {
+        fetch("http://localhost:3006/api/v1/jobs")
+            .then((res) => res.json())
+            .then((jobs) => {
+                //console.log(jobs);
+                setJobs(jobs);
+            })
+            .catch((err) => console.log(err));
+    };
+
     useEffect(() => {
         const fetchJobs = async () => {
             await fetchEventSource(`${serverBaseURL}/stream`, {
@@ -27,8 +37,12 @@ function App() {
                     }
                 },
                 onmessage(event) {
-                    //const data = JSON.parse(event.data);
+                    // notify client side new jobs are posted
                     console.log(event.data);
+                    if (event.data === "true") {
+                        console.log("trueee");
+                        getAllJobs();
+                    }
                 },
                 onclose() {
                     console.log("Connection closed by the server");
@@ -38,15 +52,8 @@ function App() {
                 },
             });
         };
+        getAllJobs();
         fetchJobs();
-
-        fetch("http://localhost:3006/api/v1/jobs")
-            .then((res) => res.json())
-            .then((jobs) => {
-                console.log(jobs);
-                setJobs(jobs);
-            })
-            .catch((err) => console.log(err));
     }, []);
 
     return (

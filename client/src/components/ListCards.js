@@ -1,7 +1,7 @@
 import React from "react";
 import { JobCard } from "../components/Card";
 import { Box, Grid } from "@mui/material";
-
+import { Pagination } from "@mui/material";
 export class JobsCards extends React.Component {
     state = {
         jobs: [],
@@ -9,6 +9,7 @@ export class JobsCards extends React.Component {
     render() {
         return (
             <Grid item md={6} xs={12}>
+                <Pagination count={10} shape="rounded" color="info" />
                 <Box
                     m={1}
                     display="flex"
