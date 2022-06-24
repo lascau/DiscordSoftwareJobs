@@ -13,26 +13,39 @@ const cardStyle = {
     display: "block",
     transitionDuration: "0.3s",
     width: "45vw",
+    height: "19%",
 };
 
 export class JobCard extends React.Component {
     state = {
-        showFullCardContent: false,
+        shadow: 1,
     };
 
-    hideShowCardContentEvent = () => {
-        this.state.showFullCardContent = !this.state.showFullCardContent;
-        console.log(this.state.showFullCardContent);
-    };
+    onMouseOver = () => this.setState({ shadow: 30 });
+
+    onMouseOut = () => this.setState({ shadow: 10 });
 
     render() {
         return (
-            <Card style={cardStyle}>
+            <Card
+                style={cardStyle}
+                sx={{
+                    ":hover": {
+                        boxShadow: 10, // theme.shadows[20]
+                    },
+                }}
+            >
                 <CardHeader
                     title={this.props.author}
                     avatar={<Avatar src={discordAvatar} />}
                 ></CardHeader>
-                <CardContent>
+                <CardContent
+                    sx={{
+                        ":hover": {
+                            fontSize: 20, // theme.shadows[20]
+                        },
+                    }}
+                >
                     <Typography variant="h7">
                         {this.props.jobDescription}
                     </Typography>

@@ -1,29 +1,31 @@
 import React from "react";
 import { JobCard } from "../components/Card";
 import { Box, Grid } from "@mui/material";
-import { Pagination } from "@mui/material";
+
 export class JobsCards extends React.Component {
-    state = {
-        jobs: [],
-    };
     render() {
         return (
             <Grid item md={6} xs={12}>
-                <Pagination count={10} shape="rounded" color="info" />
                 <Box
                     m={1}
                     display="flex"
                     alignItems="center"
                     flexDirection="column"
                 >
-                    {this.props.jobs.map((job) => (
-                        <Box mb={2}>
-                            <JobCard
-                                author={job.author}
-                                jobDescription={job.content}
-                            />
-                        </Box>
-                    ))}
+                    {this.props.jobs
+                        .slice(
+                            this.props.currentPage * this.props.pageSize,
+                            this.props.currentPage * this.props.pageSize +
+                                this.props.pageSize
+                        )
+                        .map((job) => (
+                            <Box mb={2}>
+                                <JobCard
+                                    author={job.author}
+                                    jobDescription={job.content}
+                                />
+                            </Box>
+                        ))}
                 </Box>
             </Grid>
         );
