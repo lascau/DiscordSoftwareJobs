@@ -14,8 +14,8 @@ export class JobsCards extends React.Component {
                 >
                     {this.props.jobs
                         .slice(
-                            this.props.currentPage * this.props.pageSize,
-                            this.props.currentPage * this.props.pageSize +
+                            (this.props.currentPage - 1) * this.props.pageSize,
+                            (this.props.currentPage - 1) * this.props.pageSize +
                                 this.props.pageSize
                         )
                         .map((job) => (

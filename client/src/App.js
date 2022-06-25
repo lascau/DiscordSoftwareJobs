@@ -27,7 +27,7 @@ function App() {
                     jobs.length,
                     jobsPerPage,
                     totalPages,
-                    Math.ceil(jobs.length / jobsPerPage),
+                    jobs.length / jobsPerPage,
                     "--$@"
                 );
                 setLoading(false);
