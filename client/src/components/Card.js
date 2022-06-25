@@ -31,7 +31,7 @@ export class JobCard extends React.Component {
                 style={cardStyle}
                 sx={{
                     ":hover": {
-                        boxShadow: 10, // theme.shadows[20]
+                        boxShadow: 10,
                     },
                 }}
             >

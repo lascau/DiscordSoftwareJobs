@@ -5,6 +5,7 @@ import { fetchEventSource } from "@microsoft/fetch-event-source";
 import { Pagination } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import { Box } from "@mui/material";
 
 const serverBaseURL = "http://localhost:3006/api/v1/jobs";
 
@@ -91,24 +92,35 @@ function App() {
                 <CircularProgress />
             ) : (
                 <div>
-                    <Pagination
-                        count={totalPages}
-                        shape="rounded"
-                        color="info"
-                        onChange={handleChange}
-                    />
-                    <JobsCards
-                        jobs={jobs}
-                        currentPage={currentPage}
-                        pageSize={jobsPerPage}
-                    />
-                    <div>
+                    <Box
+                        m={1}
+                        display="flex"
+                        alignItems="center"
+                        flexDirection="column"
+                    >
+                        <Pagination
+                            count={totalPages}
+                            shape="rounded"
+                            color="info"
+                            onChange={handleChange}
+                        />
+
+                        <JobsCards
+                            jobs={jobs}
+                            currentPage={currentPage}
+                            pageSize={jobsPerPage}
+                        />
                         <ArrowUpwardIcon
                             fontSize="large"
                             color="action"
                             onClick={scrollTop}
                         />
-                    </div>
+                        <footer>
+                            <p style={{ color: "black" }}>
+                                © 2022 Lascau Ionut Sebastian
+                            </p>
+                        </footer>
+                    </Box>
                 </div>
             )}
         </div>
