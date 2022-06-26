@@ -5,7 +5,9 @@ import { fetchEventSource } from "@microsoft/fetch-event-source";
 import { Pagination } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
-import { Box } from "@mui/material";
+import { Box, Stack } from "@mui/material";
+import DarkMode from "./components/DarkMode";
+import "./components/css/DarkMode.css";
 
 const serverBaseURL = "http://localhost:3006/api/v1/jobs";
 
@@ -21,16 +23,8 @@ function App() {
         fetch("http://localhost:3006/api/v1/jobs")
             .then((res) => res.json())
             .then((jobs) => {
-                //console.log(jobs);
                 setJobs(jobs);
                 setTotalPages(Math.ceil(jobs.length / jobsPerPage));
-                console.log(
-                    jobs.length,
-                    jobsPerPage,
-                    totalPages,
-                    jobs.length / jobsPerPage,
-                    "--$@"
-                );
                 setLoading(false);
             })
             .catch((err) => console.log(err));
@@ -93,18 +87,22 @@ function App() {
             ) : (
                 <div>
                     <Box
-                        m={1}
+                        m={3}
                         display="flex"
                         alignItems="center"
                         flexDirection="column"
                     >
-                        <Pagination
-                            count={totalPages}
-                            shape="rounded"
-                            color="info"
-                            onChange={handleChange}
-                        />
-
+                        <Stack direction="row" spacing={10}>
+                            <Pagination
+                                count={totalPages}
+                                shape="rounded"
+                                color="primary"
+                                variant="text"
+                                className={"paginationLinkStyle"}
+                                onChange={handleChange}
+                            />
+                            <DarkMode />
+                        </Stack>
                         <JobsCards
                             jobs={jobs}
                             currentPage={currentPage}
@@ -112,14 +110,10 @@ function App() {
                         />
                         <ArrowUpwardIcon
                             fontSize="large"
-                            color="action"
+                            className="arrowScrollUp"
                             onClick={scrollTop}
                         />
-                        <footer>
-                            <p style={{ color: "black" }}>
-                                © 2022 Lascau Ionut Sebastian
-                            </p>
-                        </footer>
+                        <footer>© 2022 Lascau Ionut Sebastian</footer>
                     </Box>
                 </div>
             )}
