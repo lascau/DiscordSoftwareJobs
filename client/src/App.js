@@ -2,10 +2,16 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import JobsCards from "./components/ListCards";
 import { fetchEventSource } from "@microsoft/fetch-event-source";
-import { Pagination } from "@mui/material";
-import CircularProgress from "@mui/material/CircularProgress";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
-import { Box, Stack } from "@mui/material";
+import FilterAltIcon from "@mui/icons-material/FilterAlt";
+import {
+    Box,
+    Stack,
+    Dialog,
+    Checkbox,
+    Pagination,
+    CircularProgress,
+} from "@mui/material";
 import DarkMode from "./components/DarkMode";
 import "./components/css/DarkMode.css";
 
@@ -17,6 +23,7 @@ function App() {
     const [totalPages, setTotalPages] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [jobsPerPage, setJobsPerPage] = useState(5);
+    const [showFilterDialog, setShowFilterDialog] = useState(false);
 
     const getAllJobs = () => {
         setLoading(true);
@@ -80,6 +87,10 @@ function App() {
         });
     };
 
+    const showFilterDialogHandler = () => {
+        setShowFilterDialog(!showFilterDialog);
+    };
+
     return (
         <div className="App">
             {loading ? (
@@ -93,6 +104,36 @@ function App() {
                         flexDirection="column"
                     >
                         <Stack direction="row" spacing={10}>
+                            <FilterAltIcon onClick={showFilterDialogHandler} />
+                            <Dialog
+                                open={showFilterDialog}
+                                onClose={() => setShowFilterDialog(false)}
+                            >
+                                <Box
+                                    display="flex"
+                                    justifyContent="center"
+                                    alignItems="center"
+                                    width="300px"
+                                >
+                                    <Stack>
+                                        <Stack direction="row">
+                                            <p>For Hire</p>
+                                            <Checkbox
+                                                className="cb-for-hire"
+                                                label="For-Hire"
+                                            />
+                                        </Stack>
+                                        <Stack direction="row">
+                                            <p>Hiring &nbsp;&nbsp;</p>
+                                            <Checkbox label="Hiring" />
+                                        </Stack>
+                                        <Stack direction="row">
+                                            <p>Remote</p>
+                                            <Checkbox label="Remote" />
+                                        </Stack>
+                                    </Stack>
+                                </Box>
+                            </Dialog>
                             <Pagination
                                 count={totalPages}
                                 shape="rounded"
