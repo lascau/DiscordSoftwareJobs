@@ -3,19 +3,23 @@
     --font-color: #333;
     --background-color: #eee;
     --link-color: cornflowerblue;
+    --cards-color: rgb(255, 255, 255);
+    --cards-text: black;
 }
 
 /* 2 */
 [data-theme="dark"] {
     --font-color: #eee;
-    --background-color: #333;
+    --background-color: rgb(99, 96, 96);
     --link-color: rgb(27, 87, 107);
+    --cards-color: rgb(14, 12, 12);
+    --cards-text: white;
 }
 
 /* white/dark mode on elements */
 body {
     background-color: var(--background-color);
-    color: var(--font-color);
+    color: var(--cards-text);
 }
 
 a {
@@ -36,6 +40,18 @@ footer {
 
 .MuiSvgIcon-root {
     color: var(--font-color);
+}
+
+.MuiCardHeader-root {
+    background-color: var(--cards-color);
+}
+
+.MuiCardContent-root {
+    background-color: var(--cards-color);
+}
+
+.MuiTypography-root {
+    color: var(--cards-text);
 }
 
 /* Custom Dark Mode Toggle Element */
@@ -88,7 +104,7 @@ input:checked + .slider:before {
 }
 
 input:checked + .slider {
-    background-color: rgb(164, 171, 184);
+    background-color: rgb(45, 47, 51);
 }
 
 .slider.round {

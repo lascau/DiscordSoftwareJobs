@@ -42,7 +42,7 @@ export class JobCard extends React.Component {
                 <CardContent
                     sx={{
                         ":hover": {
-                            fontSize: 20, // theme.shadows[20]
+                            fontSize: 18, // theme.shadows[20]
                         },
                     }}
                 >

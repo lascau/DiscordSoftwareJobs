@@ -96,7 +96,6 @@ function App() {
                             <Pagination
                                 count={totalPages}
                                 shape="rounded"
-                                color="primary"
                                 variant="text"
                                 className={"paginationLinkStyle"}
                                 onChange={handleChange}
