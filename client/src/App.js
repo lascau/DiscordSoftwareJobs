@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import JobsCards from "./components/ListCards";
 import { fetchEventSource } from "@microsoft/fetch-event-source";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import {
     Box,
@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import DarkMode from "./components/DarkMode";
 import "./components/css/DarkMode.css";
+import BottomPage from "./components/BottomPage";
 
 const serverBaseURL = "http://localhost:3006/api/v1/jobs";
 
@@ -24,6 +25,11 @@ function App() {
     const [currentPage, setCurrentPage] = useState(1);
     const [jobsPerPage, setJobsPerPage] = useState(5);
     const [showFilterDialog, setShowFilterDialog] = useState(false);
+    const [globalJobs, setGlobalJobs] = useState([]);
+    // filters
+    const [isFilteredByHiring, setIsFilteredByHiring] = useState(false);
+    const [isFilteredByRemote, setIsFilteredByRemote] = useState(false);
+    const [isFilteredByForHire, setIsFilteredByForHire] = useState(false);
 
     const getAllJobs = () => {
         setLoading(true);
@@ -31,6 +37,7 @@ function App() {
             .then((res) => res.json())
             .then((jobs) => {
                 setJobs(jobs);
+                setGlobalJobs(jobs);
                 setTotalPages(Math.ceil(jobs.length / jobsPerPage));
                 setLoading(false);
             })
@@ -80,15 +87,40 @@ function App() {
         setCurrentPage(page);
     };
 
-    const scrollTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
-    };
-
     const showFilterDialogHandler = () => {
         setShowFilterDialog(!showFilterDialog);
+    };
+
+    const handleHiringCheckbox = (e) => {
+        const isHiringChecked = document.getElementById("hiring_checkbox")
+            .checked;
+        const isRemoteChecked = document.getElementById("remote_checkbox")
+            .checked;
+        const isForHireChecked = document.getElementById("for_hire_checkbox")
+            .checked;
+        console.log(isForHireChecked, isHiringChecked, isRemoteChecked);
+
+        const filteredJobs = globalJobs.filter(
+            (job) =>
+                (isHiringChecked
+                    ? job.content.toLowerCase().includes("hiring")
+                    : true) &&
+                (isRemoteChecked
+                    ? job.content.toLowerCase().includes("remote")
+                    : true) &&
+                (isForHireChecked
+                    ? job.content.toLowerCase().includes("for hire")
+                    : true)
+        );
+
+        setJobs(filteredJobs);
+        setTotalPages(Math.ceil(filteredJobs.length / jobsPerPage));
+        setCurrentPage(1);
+
+        //filters
+        setIsFilteredByHiring(isHiringChecked);
+        setIsFilteredByRemote(isRemoteChecked);
+        setIsFilteredByForHire(isForHireChecked);
     };
 
     return (
@@ -119,17 +151,29 @@ function App() {
                                         <Stack direction="row">
                                             <p>For Hire</p>
                                             <Checkbox
-                                                className="cb-for-hire"
+                                                id="for_hire_checkbox"
+                                                onChange={handleHiringCheckbox}
+                                                checked={isFilteredByForHire}
                                                 label="For-Hire"
                                             />
                                         </Stack>
                                         <Stack direction="row">
                                             <p>Hiring &nbsp;&nbsp;</p>
-                                            <Checkbox label="Hiring" />
+                                            <Checkbox
+                                                id="hiring_checkbox"
+                                                onChange={handleHiringCheckbox}
+                                                checked={isFilteredByHiring}
+                                                label="Hiring"
+                                            />
                                         </Stack>
                                         <Stack direction="row">
                                             <p>Remote</p>
-                                            <Checkbox label="Remote" />
+                                            <Checkbox
+                                                id="remote_checkbox"
+                                                onChange={handleHiringCheckbox}
+                                                checked={isFilteredByRemote}
+                                                label="Remote"
+                                            />
                                         </Stack>
                                     </Stack>
                                 </Box>
@@ -148,12 +192,7 @@ function App() {
                             currentPage={currentPage}
                             pageSize={jobsPerPage}
                         />
-                        <ArrowUpwardIcon
-                            fontSize="large"
-                            className="arrowScrollUp"
-                            onClick={scrollTop}
-                        />
-                        <footer>© 2022 Lascau Ionut Sebastian</footer>
+                        <BottomPage />
                     </Box>
                 </div>
             )}
