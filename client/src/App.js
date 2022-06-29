@@ -5,8 +5,8 @@ import { fetchEventSource } from "@microsoft/fetch-event-source";
 import { Box, Stack, Pagination, CircularProgress } from "@mui/material";
 import DarkMode from "./components/DarkMode";
 import "./components/css/DarkMode.css";
-import BottomPage from "./components/BottomPage";
 import JobsFilterDialog from "./components/JobsFilterDialog";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
 const serverBaseURL = "http://localhost:3006/api/v1/jobs";
 
@@ -73,6 +73,13 @@ function App() {
         setCurrentPage(page);
     };
 
+    const scrollTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    };
+
     return (
         <div className="App">
             {loading ? (
@@ -106,7 +113,33 @@ function App() {
                         currentPage={currentPage}
                         pageSize={jobsPerPage}
                     />
-                    <BottomPage />
+                    {jobs.length ? (
+                        <Box
+                            m={3}
+                            display="flex"
+                            alignItems="center"
+                            flexDirection="column"
+                        >
+                            <ArrowUpwardIcon
+                                fontSize="large"
+                                className="arrowScrollUp"
+                                onClick={scrollTop}
+                            />
+                            <footer>© 2022 Lascau Ionut Sebastian</footer>
+                        </Box>
+                    ) : (
+                        <Box
+                            m={-5}
+                            ml={-20}
+                            mt={1}
+                            display="flex"
+                            alignItems="center"
+                            flexDirection="column"
+                            className="no_jobs"
+                        >
+                            No jobs available
+                        </Box>
+                    )}
                 </Box>
             )}
         </div>

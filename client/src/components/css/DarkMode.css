@@ -50,6 +50,10 @@ footer {
     color: var(--cards-text);
 }
 
+.no_jobs {
+    color: var(--cards-text);
+}
+
 cb-for-hire:active {
     color: var(--cards-text);
 }
