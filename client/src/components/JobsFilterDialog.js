@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import { Box, Stack, Dialog, Checkbox } from "@mui/material";
-import FilterAltIcon from "@mui/icons-material/FilterAlt";
 
 const JobsFilterDialog = (props) => {
     const [showFilterDialog, setShowFilterDialog] = useState(false);
@@ -48,9 +47,13 @@ const JobsFilterDialog = (props) => {
 
     return (
         <div>
-            <FilterAltIcon
-                style={{ color: "black" }}
-                fontSize="large"
+            <img
+                src="filter-funnel.svg"
+                sx={{
+                    "&:hover": {
+                        transform: "rotate(-10deg) ",
+                    },
+                }}
                 onClick={showFilterDialogHandler}
             />
             <Dialog

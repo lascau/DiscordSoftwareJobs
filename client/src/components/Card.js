@@ -6,7 +6,6 @@ import {
     CardHeader,
     Avatar,
 } from "@mui/material";
-//import { ExpandMore } from "@material-ui/icons/ExpandMore";
 import discordAvatar from "../assets/one_punch_man.png";
 
 const cardStyle = {
@@ -42,7 +41,7 @@ export class JobCard extends React.Component {
                 <CardContent
                     sx={{
                         ":hover": {
-                            fontSize: 18, // theme.shadows[20]
+                            fontSize: 18,
                         },
                     }}
                 >
