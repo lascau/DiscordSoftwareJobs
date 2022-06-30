@@ -48,7 +48,11 @@ const JobsFilterDialog = (props) => {
 
     return (
         <div>
-            <FilterAltIcon onClick={showFilterDialogHandler} />
+            <FilterAltIcon
+                style={{ color: "black" }}
+                fontSize="large"
+                onClick={showFilterDialogHandler}
+            />
             <Dialog
                 open={showFilterDialog}
                 onClose={() => setShowFilterDialog(false)}
@@ -67,6 +71,7 @@ const JobsFilterDialog = (props) => {
                                 onChange={handleHiringCheckbox}
                                 checked={isFilteredByForHire}
                                 label="For-Hire"
+                                style={{ color: "black" }}
                             />
                         </Stack>
                         <Stack direction="row">
@@ -75,7 +80,7 @@ const JobsFilterDialog = (props) => {
                                 id="hiring_checkbox"
                                 onChange={handleHiringCheckbox}
                                 checked={isFilteredByHiring}
-                                label="Hiring"
+                                style={{ color: "black" }}
                             />
                         </Stack>
                         <Stack direction="row">
@@ -85,6 +90,7 @@ const JobsFilterDialog = (props) => {
                                 onChange={handleHiringCheckbox}
                                 checked={isFilteredByRemote}
                                 label="Remote"
+                                style={{ color: "black" }}
                             />
                         </Stack>
                     </Stack>

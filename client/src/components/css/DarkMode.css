@@ -34,10 +34,6 @@ footer {
     -webkit-text-fill-color: var(--font-color);
 }
 
-.MuiSvgIcon-root {
-    color: var(--font-color);
-}
-
 .MuiCardHeader-root {
     background-color: var(--cards-color);
 }
@@ -51,10 +47,6 @@ footer {
 }
 
 .no_jobs {
-    color: var(--cards-text);
-}
-
-cb-for-hire:active {
     color: var(--cards-text);
 }
 
