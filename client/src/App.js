@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import JobsCards from "./components/ListCards";
+import JobsCards from "./components/JobsCards";
 import { fetchEventSource } from "@microsoft/fetch-event-source";
 import { Box, Stack, Pagination, CircularProgress } from "@mui/material";
 import DarkMode from "./components/DarkMode";
@@ -112,6 +112,7 @@ function App() {
                         jobs={jobs}
                         currentPage={currentPage}
                         pageSize={jobsPerPage}
+                        key={Math.random()}
                     />
                     {jobs.length ? (
                         <Box

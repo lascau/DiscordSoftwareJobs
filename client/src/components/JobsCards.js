@@ -20,11 +20,14 @@ export class JobsCards extends React.Component {
                             (this.props.currentPage - 1) * this.props.pageSize +
                                 this.props.pageSize
                         )
-                        .map((job) => (
+                        .map((job, index) => (
                             <Box mb={2}>
                                 <JobCard
                                     author={job.author}
                                     jobDescription={job.content}
+                                    key={`Job ${(this.props.currentPage - 1) *
+                                        this.props.pageSize +
+                                        index}`}
                                 />
                             </Box>
                         ))

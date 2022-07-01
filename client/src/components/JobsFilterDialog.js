@@ -16,7 +16,6 @@ const JobsFilterDialog = (props) => {
             .checked;
         const isForHireChecked = document.getElementById("for_hire_checkbox")
             .checked;
-        console.log(isForHireChecked, isHiringChecked, isRemoteChecked);
 
         const filteredJobs = props.globalJobs.filter(
             (job) =>
@@ -55,6 +54,7 @@ const JobsFilterDialog = (props) => {
                     },
                 }}
                 onClick={showFilterDialogHandler}
+                alt="filter funnel logo"
             />
             <Dialog
                 open={showFilterDialog}
