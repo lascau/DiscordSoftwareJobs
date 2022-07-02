@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import JobsCards from "./components/JobsCards";
 import { fetchEventSource } from "@microsoft/fetch-event-source";
 import { Box, Stack, Pagination, CircularProgress } from "@mui/material";
-import DarkMode from "./components/DarkMode";
 import "./components/css/DarkMode.css";
+import DarkMode from "./components/DarkMode";
+import JobsCards from "./components/JobsCards";
 import JobsFilterDialog from "./components/JobsFilterDialog";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import JobsFooter from "./components/JobsFooter";
 
-const serverBaseURL = "http://localhost:3006/api/v1/jobs";
+const GET_ALL_JOBS_ENDPOINT = "http://localhost:3006/api/v1/jobs";
 
 function App() {
     const [jobs, setJobs] = useState([]);
@@ -20,7 +20,7 @@ function App() {
 
     const getAllJobs = () => {
         setLoading(true);
-        fetch("http://localhost:3006/api/v1/jobs")
+        fetch(GET_ALL_JOBS_ENDPOINT)
             .then((res) => res.json())
             .then((jobs) => {
                 setJobs(jobs);
@@ -31,53 +31,46 @@ function App() {
             .catch((err) => console.log(err));
     };
 
+    const fetchJobs = async () => {
+        await fetchEventSource(`${GET_ALL_JOBS_ENDPOINT}/stream`, {
+            method: "POST",
+            headers: {
+                Accept: "text/event-stream",
+            },
+            onopen(res) {
+                if (res.ok && res.status === 200) {
+                    console.log("Connection made ", res);
+                } else if (
+                    res.status >= 400 &&
+                    res.status < 500 &&
+                    res.status !== 429
+                ) {
+                    console.log("Client side error ", res);
+                }
+            },
+            onmessage(event) {
+                // notify client side new jobs are posted
+                console.log(event.data);
+                if (event.data === "true") {
+                    console.log("trueee");
+                    getAllJobs();
+                }
+            },
+            onclose() {
+                console.log("Connection closed by the server");
+            },
+            onerror(err) {
+                console.log("There was an error from server", err);
+            },
+        });
+    };
     useEffect(() => {
-        const fetchJobs = async () => {
-            await fetchEventSource(`${serverBaseURL}/stream`, {
-                method: "POST",
-                headers: {
-                    Accept: "text/event-stream",
-                },
-                onopen(res) {
-                    if (res.ok && res.status === 200) {
-                        console.log("Connection made ", res);
-                    } else if (
-                        res.status >= 400 &&
-                        res.status < 500 &&
-                        res.status !== 429
-                    ) {
-                        console.log("Client side error ", res);
-                    }
-                },
-                onmessage(event) {
-                    // notify client side new jobs are posted
-                    console.log(event.data);
-                    if (event.data === "true") {
-                        console.log("trueee");
-                        getAllJobs();
-                    }
-                },
-                onclose() {
-                    console.log("Connection closed by the server");
-                },
-                onerror(err) {
-                    console.log("There was an error from server", err);
-                },
-            });
-        };
         getAllJobs();
         //fetchJobs();
     }, []);
 
     const handleChange = (event, page) => {
         setCurrentPage(page);
-    };
-
-    const scrollTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
     };
 
     return (
@@ -114,33 +107,7 @@ function App() {
                         pageSize={jobsPerPage}
                         key={Math.random()}
                     />
-                    {jobs.length ? (
-                        <Box
-                            m={3}
-                            display="flex"
-                            alignItems="center"
-                            flexDirection="column"
-                        >
-                            <ArrowUpwardIcon
-                                fontSize="large"
-                                className="arrowScrollUp"
-                                onClick={scrollTop}
-                            />
-                            <footer>© 2022 Lascau Ionut Sebastian</footer>
-                        </Box>
-                    ) : (
-                        <Box
-                            m={-5}
-                            ml={-20}
-                            mt={1}
-                            display="flex"
-                            alignItems="center"
-                            flexDirection="column"
-                            className="no_jobs"
-                        >
-                            No jobs available
-                        </Box>
-                    )}
+                    <JobsFooter jobsLength={jobs.length} />
                 </Box>
             )}
         </div>
