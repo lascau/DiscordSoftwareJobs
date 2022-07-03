@@ -24,7 +24,7 @@ const createJob = async (req, res) => {
                 if (!jobExist) {
                     Job.create(job)
                         .then((data) => {
-                            res.send(data);
+                            res.send({data: data, message: "New Job added"});
                         })
                         .catch((err) => {
                             res.status(500).send({
@@ -34,7 +34,7 @@ const createJob = async (req, res) => {
                             });
                         });
                 } else {
-                    res.status(200).send({ message: "Duplicare job in table" });
+                    res.status(409).send({ message: "Duplicate job in table" });
                 }
             });
         _transaction.commit();
@@ -136,20 +136,20 @@ const fetchAllJobs = (req, res) => {
         });
 };
 
-const streamNotifyNewJobs = (req, res) => {
+const streamNotifyNewJobs = async(req, res) => {
+
     res.writeHead(200, {
         "Content-Type": "text/event-stream",
         "Cache-Control": "no-cache",
         "Connection": "keep-alive",
     });
-    
-    setInterval(() => {
-        const areNewJobs = background_tasks.getJobsbyChannel(process.env.REACTIFLUX_JOB_BOARD_SERVER_ID);
-        areNewJobs.then(areJobs => {
-            res.write(`data: ${areJobs}`);
+
+   await background_tasks
+        .getJobsbyChannel(process.env.MY_SERVER_TEST)
+        .then(r => {
+            res.write(`data: ${r}`);
             res.write("\n\n");
-        })
-    }, 5000);
+        })  
 };
 
 module.exports = {

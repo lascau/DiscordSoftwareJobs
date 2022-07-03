@@ -32,7 +32,7 @@ function App() {
     };
 
     const fetchJobs = async () => {
-        await fetchEventSource(`${GET_ALL_JOBS_ENDPOINT}/stream`, {
+        await fetchEventSource(`http://localhost:3006/api/v1/jobs/stream`, {
             method: "POST",
             headers: {
                 Accept: "text/event-stream",
@@ -52,8 +52,10 @@ function App() {
                 // notify client side new jobs are posted
                 console.log(event.data);
                 if (event.data === "true") {
-                    console.log("trueee");
+                    // console.log("trueee");
                     getAllJobs();
+                } else {
+                    //console.log("falseee");
                 }
             },
             onclose() {
@@ -66,7 +68,7 @@ function App() {
     };
     useEffect(() => {
         getAllJobs();
-        //fetchJobs();
+        fetchJobs();
     }, []);
 
     const handleChange = (event, page) => {

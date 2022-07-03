@@ -6,7 +6,11 @@ require("dotenv").config({ path: "../.env" });
 const port = process.env.PORT_SERVER;
 
 app.use(express.json());
-app.use(cors());
+var corsOptions = {
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200 // For legacy browser support
+}
+app.use(cors(corsOptions));
 
 // Database Connection
 const db = require("./config/db");
