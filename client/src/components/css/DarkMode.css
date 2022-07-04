@@ -5,6 +5,7 @@
     --link-color: cornflowerblue;
     --cards-color: rgb(255, 255, 255);
     --cards-text: black;
+    --dark_mode_emoji: "☀️";
 }
 
 /* 2 */
@@ -14,6 +15,7 @@
     --link-color: rgb(27, 87, 107);
     --cards-color: rgb(14, 12, 12);
     --cards-text: white;
+    --dark_mode_emoji: "🌙";
 }
 
 /* white/dark mode on elements */
@@ -85,9 +87,9 @@ footer {
 }
 
 .slider:before {
-    background-color: #fff;
+    background-color: var(--background-color);
     bottom: 4px;
-    content: "";
+    content: var(--dark_mode_emoji);
     height: 26px;
     left: 4px;
     position: absolute;
