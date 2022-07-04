@@ -15,6 +15,8 @@ const createJob = async (req, res) => {
         content: req.body.content,
         author: req.body.author,
         date_posted: req.body.date_posted,
+        author_id: req.body.author_id,
+        avatar_id: req.body.avatar_id 
     };
     const _transaction = await Job.sequelize.transaction();
     try {
@@ -145,7 +147,7 @@ const streamNotifyNewJobs = async(req, res) => {
     });
 
    await background_tasks
-        .getJobsbyChannel(process.env.MY_SERVER_TEST)
+        .getJobsbyChannel(process.env.REACTIFLUX_JOB_BOARD_SERVER_ID)
         .then(r => {
             res.write(`data: ${r}`);
             res.write("\n\n");

@@ -36,7 +36,15 @@ export class JobCard extends React.Component {
             >
                 <CardHeader
                     title={this.props.author}
-                    avatar={<Avatar src={discordAvatar} />}
+                    avatar={
+                        <Avatar
+                            src={
+                                this.props.avatarId
+                                    ? `https://cdn.discordapp.com/avatars/${this.props.authorId}/${this.props.avatarId}.png?size=60"`
+                                    : ""
+                            }
+                        />
+                    }
                 ></CardHeader>
                 <CardContent
                     sx={{

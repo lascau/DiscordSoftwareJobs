@@ -25,6 +25,8 @@ export class JobsCards extends React.Component {
                                 <JobCard
                                     author={job.author}
                                     jobDescription={job.content}
+                                    avatarId={job.avatar_id}
+                                    authorId={job.author_id}
                                     key={`Job ${(this.props.currentPage - 1) *
                                         this.props.pageSize +
                                         index}`}

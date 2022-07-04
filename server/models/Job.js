@@ -17,6 +17,17 @@ const jobs = db.define(
             type: Sequelize.STRING,
             allowNull: true,
         },
+
+        avatar_id: {
+            type: Sequelize.STRING,
+            allowNull: true,
+        },
+
+        author_id: {
+            type: Sequelize.STRING,
+            allowNull: true,
+        },
+
         date_posted: {
             type: Sequelize.DATE,
             allowNull: true,
