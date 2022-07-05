@@ -90,6 +90,7 @@ footer {
     background-color: var(--background-color);
     bottom: 4px;
     content: var(--dark_mode_emoji);
+    text-align: center;
     height: 26px;
     left: 4px;
     position: absolute;
