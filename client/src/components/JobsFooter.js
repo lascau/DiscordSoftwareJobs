@@ -2,7 +2,7 @@ import React from "react";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import { Box } from "@mui/material";
 
-const JobsFooter = ({ jobsLength }) => {
+export const JobsFooter = ({ jobsLength }) => {
     const scrollTop = () => {
         window.scrollTo({
             top: 0,
@@ -33,5 +33,3 @@ const JobsFooter = ({ jobsLength }) => {
         </Box>
     );
 };
-
-export default JobsFooter;

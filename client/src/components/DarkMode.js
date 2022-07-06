@@ -32,7 +32,7 @@ const toggleTheme = (e) => {
     }
 };
 
-const DarkMode = () => {
+export const DarkMode = () => {
     return (
         <div className="toggle-theme-wrapper">
             <label className="toggle-theme" htmlFor="checkbox">
@@ -47,5 +47,3 @@ const DarkMode = () => {
         </div>
     );
 };
-
-export default DarkMode;

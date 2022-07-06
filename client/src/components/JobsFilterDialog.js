@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Box, Stack, Dialog, Checkbox } from "@mui/material";
 
-const JobsFilterDialog = (props) => {
+export const JobsFilterDialog = (props) => {
     const [showFilterDialog, setShowFilterDialog] = useState(false);
     // filters
     const [isFilteredByHiring, setIsFilteredByHiring] = useState(false);
@@ -102,5 +102,3 @@ const JobsFilterDialog = (props) => {
         </div>
     );
 };
-
-export default JobsFilterDialog;

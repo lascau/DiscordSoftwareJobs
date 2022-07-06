@@ -6,7 +6,6 @@ import {
     CardHeader,
     Avatar,
 } from "@mui/material";
-import discordAvatar from "../assets/one_punch_man.png";
 
 const cardStyle = {
     display: "block",
