@@ -7,7 +7,7 @@ const port = process.env.PORT_SERVER;
 
 app.use(express.json());
 var corsOptions = {
-    origin: ["https://discord-job-site.herokuapp.com"],
+    origin: ["http://localhost:3000", "https://discord-job-site.herokuapp.com"],
     optionsSuccessStatus: 200 // For legacy browser support
 }
 app.use(cors(corsOptions));
