@@ -1,0 +1,115 @@
+/* 1 */
+:root {
+    --font-color: #333;
+    --background-color: #eee;
+    --link-color: cornflowerblue;
+    --cards-color: rgb(255, 255, 255);
+    --cards-text: black;
+    --dark_mode_emoji: "☀️";
+}
+
+/* 2 */
+[data-theme="dark"] {
+    --font-color: #eee;
+    --background-color: rgb(99, 96, 96);
+    --link-color: rgb(27, 87, 107);
+    --cards-color: rgb(14, 12, 12);
+    --cards-text: white;
+    --dark_mode_emoji: "🌙";
+}
+
+/* white/dark mode on elements */
+body {
+    background-color: var(--background-color);
+    color: var(--cards-text);
+}
+
+footer {
+    color: var(--font-color);
+}
+
+.arrowScrollUp {
+    color: var(--font-color);
+}
+
+.paginationLinkStyle {
+    -webkit-text-fill-color: var(--font-color);
+}
+
+.MuiCardHeader-root {
+    background-color: var(--cards-color);
+}
+
+.MuiCardContent-root {
+    background-color: var(--cards-color);
+}
+
+.MuiTypography-root {
+    color: var(--cards-text);
+}
+
+.no_jobs {
+    color: var(--cards-text);
+}
+
+/* Custom Dark Mode Toggle Element */
+.toggle-theme-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+}
+
+.toggle-theme-wrapper span {
+    font-size: 28px;
+}
+
+.toggle-theme {
+    position: relative;
+    display: inline-block;
+    height: 34px;
+    width: 60px;
+}
+
+.toggle-theme input {
+    display: none;
+}
+
+.slider {
+    background-color: #ccc;
+    position: absolute;
+    cursor: pointer;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    transition: 0.2s;
+}
+
+.slider:before {
+    background-color: var(--background-color);
+    bottom: 4px;
+    content: var(--dark_mode_emoji);
+    text-align: center;
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: 0.4s;
+    width: 26px;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+input:checked + .slider {
+    background-color: rgb(45, 47, 51);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
