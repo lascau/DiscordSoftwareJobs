@@ -1,6 +1,6 @@
 .react {
-    height: 120px;
-    weight: 120px;
+    height: 60px;
+    weight: 60px;
     border-radius: 50%;
 }
 .react:hover {
@@ -8,8 +8,8 @@
 }
 
 .node {
-    height: 120px;
-    weight: 120px;
+    height: 60px;
+    weight: 60px;
     border-radius: 50%;
 }
 .node:hover {
@@ -17,8 +17,8 @@
 }
 
 .go {
-    height: 120px;
-    weight: 120px;
+    height: 60px;
+    weight: 60px;
     border-radius: 50%;
 }
 .go:hover {
@@ -26,10 +26,21 @@
 }
 
 .nest {
-    height: 120px;
-    weight: 120px;
+    height: 60px;
+    weight: 60px;
     border-radius: 50%;
 }
 .nest:hover {
+    transform: scale(1.1);
+}
+
+/* mini logos for job cards*/
+.react_jobs_cards {
+    height: 30px;
+    weight: 30px;
+    border-radius: 50%;
+}
+
+.react_jobs_cards:hover {
     transform: scale(1.1);
 }

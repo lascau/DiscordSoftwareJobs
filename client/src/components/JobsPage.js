@@ -5,6 +5,8 @@ import "./css/DarkMode.css";
 import JobsCards from "./JobsCards";
 import { JobsFilterDialog } from "./JobsFilterDialog";
 import { JobsFooter } from "./JobsFooter";
+import { DarkMode } from "./DarkMode";
+import { AboutPage } from "./AboutPage";
 
 const GET_ALL_JOBS_ENDPOINT = "http://localhost:3006/api/v1/jobs";
 
@@ -27,6 +29,7 @@ export const JobsPage = () => {
                 setLoading(false);
             })
             .catch((err) => console.log(err));
+        console.log(loading);
     };
 
     const fetchJobs = async () => {
@@ -37,7 +40,7 @@ export const JobsPage = () => {
             },
             onopen(res) {
                 if (res.ok && res.status === 200) {
-                    console.log("Connection made ", res);
+                    //console.log("Connection made ", res);
                 } else if (
                     res.status >= 400 &&
                     res.status < 500 &&
@@ -48,7 +51,7 @@ export const JobsPage = () => {
             },
             onmessage(event) {
                 // notify client side new jobs are posted
-                console.log(event.data);
+                //console.log(event.data);
                 if (event.data === "true") {
                     // console.log("trueee");
                     getAllJobs();
@@ -85,6 +88,7 @@ export const JobsPage = () => {
                     alignItems="center"
                     flexDirection="column"
                 >
+                    <AboutPage />
                     <Stack direction="row" spacing={10}>
                         <JobsFilterDialog
                             globalJobs={globalJobs}
@@ -100,6 +104,7 @@ export const JobsPage = () => {
                             className={"paginationLinkStyle"}
                             onChange={handleChange}
                         />
+                        <DarkMode />
                     </Stack>
                     <JobsCards
                         jobs={jobs}

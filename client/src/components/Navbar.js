@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Breadcrumbs, Typography, MenuItem } from "@mui/material";
+import { Box, Breadcrumbs, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { DarkMode } from "./DarkMode";
 
@@ -9,18 +9,14 @@ export const Navbar = () => {
             <nav className="navigation">
                 <Breadcrumbs aria-label="breadcrumb">
                     <NavLink to="/" style={{ textDecoration: "none" }}>
-                        <MenuItem>
-                            <Typography variant="h5" gutterBottom>
-                                Jobs
-                            </Typography>
-                        </MenuItem>
+                        <Typography variant="h5" gutterBottom>
+                            Jobs
+                        </Typography>
                     </NavLink>
                     <NavLink to="/about" style={{ textDecoration: "none" }}>
-                        <MenuItem>
-                            <Typography variant="h5" gutterBottom>
-                                About
-                            </Typography>
-                        </MenuItem>
+                        <Typography variant="h5" gutterBottom>
+                            About
+                        </Typography>
                     </NavLink>
                     <DarkMode />
                 </Breadcrumbs>
