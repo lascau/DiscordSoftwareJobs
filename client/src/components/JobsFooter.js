@@ -20,16 +20,6 @@ export const JobsFooter = ({ jobsLength }) => {
             <footer>© 2022 Lascau Ionut Sebastian</footer>
         </Box>
     ) : (
-        <Box
-            m={-5}
-            ml={-20}
-            mt={1}
-            display="flex"
-            alignItems="center"
-            flexDirection="column"
-            className="no_jobs"
-        >
-            No jobs available
-        </Box>
+        <></>
     );
 };

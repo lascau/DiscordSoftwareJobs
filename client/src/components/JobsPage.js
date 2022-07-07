@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { fetchEventSource } from "@microsoft/fetch-event-source";
 import { Box, Stack, Pagination, CircularProgress } from "@mui/material";
 import "./css/DarkMode.css";
-import { DarkMode } from "./DarkMode";
 import JobsCards from "./JobsCards";
 import { JobsFilterDialog } from "./JobsFilterDialog";
 import { JobsFooter } from "./JobsFooter";
@@ -101,7 +100,6 @@ export const JobsPage = () => {
                             className={"paginationLinkStyle"}
                             onChange={handleChange}
                         />
-                        <DarkMode />
                     </Stack>
                     <JobsCards
                         jobs={jobs}

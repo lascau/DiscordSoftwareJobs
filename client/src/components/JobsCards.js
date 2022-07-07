@@ -1,17 +1,19 @@
 import React from "react";
 import { JobCard } from "../components/Card";
-import { Box, Grid } from "@mui/material";
-import DoDisturbIcon from "@mui/icons-material/DoDisturb";
+import { Box, Grid, Typography } from "@mui/material";
 export class JobsCards extends React.Component {
     render() {
         return (
             <Grid item md={6} xs={12}>
                 {this.props.jobs.length === 0 ? (
-                    <Box ml={-10}>
-                        <DoDisturbIcon
-                            fontSize="large"
-                            style={{ color: "red" }}
-                        />
+                    <Box
+                        display="flex"
+                        alignItems="center"
+                        flexDirection="column"
+                    >
+                        <Typography variant="h5" gutterBottom>
+                            No jobs available
+                        </Typography>
                     </Box>
                 ) : (
                     this.props.jobs

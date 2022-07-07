@@ -1,0 +1,35 @@
+.react {
+    height: 120px;
+    weight: 120px;
+    border-radius: 50%;
+}
+.react:hover {
+    transform: scale(1.1);
+}
+
+.node {
+    height: 120px;
+    weight: 120px;
+    border-radius: 50%;
+}
+.node:hover {
+    transform: scale(1.1);
+}
+
+.go {
+    height: 120px;
+    weight: 120px;
+    border-radius: 50%;
+}
+.go:hover {
+    transform: scale(1.1);
+}
+
+.nest {
+    height: 120px;
+    weight: 120px;
+    border-radius: 50%;
+}
+.nest:hover {
+    transform: scale(1.1);
+}
