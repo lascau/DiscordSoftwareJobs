@@ -4,7 +4,7 @@ const { Sequelize } = require("sequelize");
 const db = new Sequelize(process.env.DATABASE_URL, {
     host: "localhost",
     dialect: "postgres",
-
+    port: 5432,
     pool: {
         max: 5,
         min: 0,
