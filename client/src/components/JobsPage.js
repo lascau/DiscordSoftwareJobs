@@ -40,7 +40,7 @@ export const JobsPage = () => {
             },
             onopen(res) {
                 if (res.ok && res.status === 200) {
-                    //console.log("Connection made ", res);
+                    console.log("Connection made ", res);
                 } else if (
                     res.status >= 400 &&
                     res.status < 500 &&
@@ -51,7 +51,7 @@ export const JobsPage = () => {
             },
             onmessage(event) {
                 // notify client side new jobs are posted
-                //console.log(event.data);
+                console.log(event.data);
                 if (event.data === "true") {
                     // console.log("trueee");
                     getAllJobs();

@@ -5,7 +5,7 @@ const axios = require("axios");
 const getJobsbyChannel = async(channel_id, limit = 5) => {
     const headers = {
         "Content-Type": "application/json",
-        authorization: process.env.DISCORD_AUTHORIZATION,
+        authorization: process.env.DISCORD_AUTHORIZATION_TEST_ACCOUNT,
     };
     let areNewJobs = false;
     await axios
