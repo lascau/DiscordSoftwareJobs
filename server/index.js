@@ -6,10 +6,8 @@ require("dotenv").config({ path: "../.env" });
 const port = process.env.PORT || 3009;
 
 app.use(express.json());
-var corsOptions = {
-    origin: [ "*"],
-}
-app.use(cors(corsOptions));
+
+app.use(cors());
 
 // Database Connection
 const db = require("./config/db");
