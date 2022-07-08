@@ -19,6 +19,8 @@ export const JobsPage = () => {
     const [jobsPerPage, setJobsPerPage] = useState(5);
     const [globalJobs, setGlobalJobs] = useState([]);
 
+    const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
     const getAllJobs = () => {
         setLoading(true);
         fetch(GET_ALL_JOBS_ENDPOINT)
@@ -30,7 +32,10 @@ export const JobsPage = () => {
                 setLoading(false);
             })
             .catch((err) => console.log(err));
-        console.log(loading);
+        delay(1000);
+        if (loading) {
+            setLoading(false);
+        }
     };
 
     const fetchJobs = async () => {
