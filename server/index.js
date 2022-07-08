@@ -3,7 +3,7 @@ const cors = require("cors");
 const jobs_routes = require("./routes/jobs");
 const app = express();
 require("dotenv").config({ path: "../.env" });
-const port = process.env.PORT_SERVER || 3000;
+const port = process.env.PORT_SERVER || 3009;
 
 app.use(express.json());
 var corsOptions = {
