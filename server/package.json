@@ -2,6 +2,10 @@
     "name": "server",
     "version": "1.0.0",
     "description": "Discord Jobs Site For Software Engineers",
+    "engines": {
+        "node": "v16.13.2",
+        "npm": "8.1.2"
+    },
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
