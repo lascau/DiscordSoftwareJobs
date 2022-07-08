@@ -21,7 +21,7 @@ export const JobsPage = () => {
 
     const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-    const getAllJobs = () => {
+    const getAllJobs = async () => {
         setLoading(true);
         fetch(GET_ALL_JOBS_ENDPOINT)
             .then((res) => res.json())
@@ -32,7 +32,7 @@ export const JobsPage = () => {
                 setLoading(false);
             })
             .catch((err) => console.log(err));
-        delay(1000);
+        await delay(1000);
         if (loading) {
             setLoading(false);
         }
