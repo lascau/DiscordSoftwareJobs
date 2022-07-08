@@ -31,7 +31,6 @@ export const JobsPage = () => {
             })
             .catch((err) => {
                 console.log(err);
-                setLoading(false);
             });
     };
 
