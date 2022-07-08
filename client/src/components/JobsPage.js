@@ -59,7 +59,7 @@ export const JobsPage = () => {
                     console.log(event.data);
                     if (event.data === "true") {
                         // console.log("trueee");
-                        await getAllJobs();
+                        getAllJobs();
                     } else {
                         //console.log("falseee");
                     }
