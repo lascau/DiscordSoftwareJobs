@@ -29,8 +29,10 @@ export const JobsPage = () => {
                 setTotalPages(Math.ceil(jobs.length / jobsPerPage));
                 setLoading(false);
             })
-            .catch((err) => console.log(err));
-        console.log(loading);
+            .catch((err) => {
+                console.log(err);
+                setLoading(false);
+            });
     };
 
     const fetchJobs = async () => {
