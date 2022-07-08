@@ -7,13 +7,13 @@ const port = process.env.PORT || 3009;
 
 app.use(express.json());
 
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'https://discord-jobs-client.herokuapp.com');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     res.setHeader('Access-Control-Allow-Credentials', true);
     next();
-    });
+});
 
 // Database Connection
 const db = require("./config/db");
