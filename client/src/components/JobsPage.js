@@ -19,9 +19,9 @@ export const JobsPage = () => {
     const [jobsPerPage, setJobsPerPage] = useState(5);
     const [globalJobs, setGlobalJobs] = useState([]);
 
-    const getAllJobs = async () => {
+    const getAllJobs = () => {
         setLoading(true);
-        await fetch(GET_ALL_JOBS_ENDPOINT)
+        fetch(GET_ALL_JOBS_ENDPOINT)
             .then((res) => res.json())
             .then((jobs) => {
                 setJobs(jobs);
@@ -30,6 +30,7 @@ export const JobsPage = () => {
                 setLoading(false);
             })
             .catch((err) => console.log(err));
+        console.log(loading);
     };
 
     const fetchJobs = async () => {
