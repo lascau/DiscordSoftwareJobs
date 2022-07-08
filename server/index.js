@@ -9,13 +9,7 @@ app.use(express.json());
 
 app.options('*', cors()) 
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://discord-jobs-client.herokuapp.com');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    next();
-});
+app.use(cors());
 
 // Database Connection
 const db = require("./config/db");
@@ -33,7 +27,7 @@ app.get("/", (req, res) => {
 });
 
 //Job's routes
-app.use("/api/v1/jobs", jobs_routes);
+app.use("/api/v1/jobs", cors(), jobs_routes);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
