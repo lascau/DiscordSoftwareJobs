@@ -6,7 +6,6 @@
         "npm": "8.1.2"
     },
     "private": true,
-    "proxy": "https://discord-jobs-server.herokuapp.com/",
     "dependencies": {
         "@emotion/react": "^11.9.0",
         "@emotion/styled": "^11.8.1",
