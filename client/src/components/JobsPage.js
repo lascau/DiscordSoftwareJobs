@@ -7,7 +7,7 @@ import { JobsFilterDialog } from "./JobsFilterDialog";
 import { JobsFooter } from "./JobsFooter";
 import { DarkMode } from "./DarkMode";
 import { AboutPage } from "./AboutPage";
-require("dotenv").config();
+require("dotenv").config({ path: "../../.env" });
 
 export const JobsPage = () => {
     const [jobs, setJobs] = useState([]);
