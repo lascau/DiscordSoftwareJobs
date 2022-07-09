@@ -33,47 +33,44 @@ export const JobsPage = () => {
     };
 
     const fetchJobs = async () => {
-        await fetchEventSource(
-            `https://discord-jobs-server.herokuapp.com/stream`,
-            {
-                method: "POST",
-                headers: {
-                    Accept: "text/event-stream",
-                },
-                onopen(res) {
-                    if (res.ok && res.status === 200) {
-                        console.log("Connection made ", res);
-                    } else if (
-                        res.status >= 400 &&
-                        res.status < 500 &&
-                        res.status !== 429
-                    ) {
-                        console.log("Client side error ", res);
-                    }
-                },
-                onmessage(event) {
-                    // notify client side new jobs are posted
-                    console.log(event.data);
-                    if (event.data === "true") {
-                        // console.log("trueee");
-                        getAllJobs();
-                    } else {
-                        //console.log("falseee");
-                    }
-                },
-                onclose() {
-                    console.log("Connection closed by the server");
-                },
-                onerror(err) {
-                    console.log("There was an error from server", err);
-                },
-            }
-        );
+        await fetchEventSource(process.env.REACT_APP_JOBS_STREAM_ENDPOINT, {
+            method: "POST",
+            headers: {
+                Accept: "text/event-stream",
+            },
+            onopen(res) {
+                if (res.ok && res.status === 200) {
+                    console.log("Connection made ", res);
+                } else if (
+                    res.status >= 400 &&
+                    res.status < 500 &&
+                    res.status !== 429
+                ) {
+                    console.log("Client side error ", res);
+                }
+            },
+            onmessage(event) {
+                // notify client side new jobs are posted
+                console.log(event.data);
+                if (event.data === "true") {
+                    // console.log("trueee");
+                    getAllJobs();
+                } else {
+                    //console.log("falseee");
+                }
+            },
+            onclose() {
+                console.log("Connection closed by the server");
+            },
+            onerror(err) {
+                console.log("There was an error from server", err);
+            },
+        });
     };
 
     useEffect(() => {
         getAllJobs();
-        //fetchJobs();
+        fetchJobs();
     }, []);
 
     const handleChange = (event, page) => {
