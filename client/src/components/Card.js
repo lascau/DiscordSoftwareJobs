@@ -17,8 +17,6 @@ const cardStyle = {
 };
 
 export const JobCard = (props) => {
-    const [shadow, setShadow] = useState(0);
-
     return (
         <Card
             style={cardStyle}
