@@ -25,10 +25,6 @@ const JobsCards = (props) => {
                                 jobDescription={job.content}
                                 avatarId={job.avatar_id}
                                 authorId={job.author_id}
-                                cardId={console.log(
-                                    (props.currentPage - 1) * props.pageSize +
-                                        index
-                                )}
                                 key={index}
                             />
                         </Box>
