@@ -16,7 +16,7 @@ export const JobsPage = () => {
     const [loading, setLoading] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
-    const [jobsPerPage, setJobsPerPage] = useState(5);
+    const [jobsPerPage] = useState(5);
     const [globalJobs, setGlobalJobs] = useState([]);
 
     const getAllJobs = async () => {
