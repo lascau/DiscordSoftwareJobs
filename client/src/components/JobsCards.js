@@ -1,5 +1,5 @@
 import React from "react";
-import { JobCard } from "../components/Card";
+import { JobCard } from "./JobCard";
 import { Box, Grid, Typography } from "@mui/material";
 
 const JobsCards = (props) => {
