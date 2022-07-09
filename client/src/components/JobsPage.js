@@ -8,9 +8,6 @@ import { JobsFooter } from "./JobsFooter";
 import { DarkMode } from "./DarkMode";
 import { AboutPage } from "./AboutPage";
 
-const GET_ALL_JOBS_ENDPOINT =
-    "https://discord-jobs-server.herokuapp.com/api/v1/jobs";
-
 export const JobsPage = () => {
     const [jobs, setJobs] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -21,7 +18,7 @@ export const JobsPage = () => {
 
     const getAllJobs = async () => {
         setLoading(true);
-        await fetch(GET_ALL_JOBS_ENDPOINT)
+        await fetch(process.env.GET_ALL_JOBS_ENDPOINT)
             .then((res) => res.json())
             .then((jobs) => {
                 setJobs(jobs);
