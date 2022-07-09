@@ -7,7 +7,6 @@ import { JobsFilterDialog } from "./JobsFilterDialog";
 import { JobsFooter } from "./JobsFooter";
 import { DarkMode } from "./DarkMode";
 import { AboutPage } from "./AboutPage";
-import { env } from "process";
 require("dotenv").config({ path: "../../.env" });
 
 export const JobsPage = () => {
@@ -73,7 +72,6 @@ export const JobsPage = () => {
     };
 
     useEffect(() => {
-        console.log(process.env.GET_ALL_JOBS_ENDPOINT);
         getAllJobs();
         //fetchJobs();
     }, []);
