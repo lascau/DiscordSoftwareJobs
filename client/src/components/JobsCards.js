@@ -34,6 +34,10 @@ const JobsCards = (props) => {
                                     index +
                                     500
                                 }
+                                xy_test={console.log(
+                                    (props.currentPage - 1) * props.pageSize +
+                                        index
+                                )}
                             />
                         </Box>
                     ))
