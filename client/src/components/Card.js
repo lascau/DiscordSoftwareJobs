@@ -25,7 +25,7 @@ export const JobCard = (props) => {
                     boxShadow: 10,
                 },
             }}
-            key={props.cardId}
+            key={`Card: ${props.cardId}`}
         >
             <CardHeader
                 title={props.author}
