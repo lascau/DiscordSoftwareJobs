@@ -7,8 +7,7 @@ import { JobsFilterDialog } from "./JobsFilterDialog";
 import { JobsFooter } from "./JobsFooter";
 import { DarkMode } from "./DarkMode";
 import { AboutPage } from "./AboutPage";
-import { env } from "process";
-require("dotenv").config({ path: "../../../.env" });
+require("dotenv").config({ path: "../../.env" });
 
 export const JobsPage = () => {
     const [jobs, setJobs] = useState([]);
@@ -21,7 +20,7 @@ export const JobsPage = () => {
     const getAllJobs = async () => {
         console.log(env);
         setLoading(true);
-        await fetch(env.GET_ALL_JOBS_ENDPOINT)
+        await fetch(process.env.REACT_APP_GET_ALL_JOBS_ENDPOINT)
             .then((res) => res.json())
             .then((jobs) => {
                 setJobs(jobs);
