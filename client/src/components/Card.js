@@ -25,6 +25,7 @@ export const JobCard = (props) => {
                     boxShadow: 10,
                 },
             }}
+            key={props.key}
         >
             <CardHeader
                 title={props.author}
