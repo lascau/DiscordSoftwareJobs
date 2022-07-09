@@ -70,7 +70,7 @@ export const JobsPage = () => {
 
     useEffect(() => {
         getAllJobs();
-        fetchJobs();
+        //fetchJobs();
     }, []);
 
     const handleChange = (event, page) => {
