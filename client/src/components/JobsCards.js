@@ -12,35 +12,24 @@ const JobsCards = (props) => {
                     </Typography>
                 </Box>
             ) : (
-                props.jobs
-                    .slice(
-                        (props.currentPage - 1) * props.pageSize,
-                        (props.currentPage - 1) * props.pageSize +
-                            props.pageSize
-                    )
-                    .map((job, index) => (
-                        <Box mb={2}>
-                            <JobCard
-                                author={job.author}
-                                jobDescription={job.content}
-                                avatarId={job.avatar_id}
-                                authorId={job.author_id}
-                                key={`JobCard
-                                    ${(props.currentPage - 1) * props.pageSize +
-                                        index}
-                                `}
-                                cardId={
-                                    (props.currentPage - 1) * props.pageSize +
-                                    index +
-                                    500
-                                }
-                                xy_test={console.log(
-                                    (props.currentPage - 1) * props.pageSize +
-                                        index
-                                )}
-                            />
-                        </Box>
-                    ))
+                React.Children.toArray(
+                    props.jobs
+                        .slice(
+                            (props.currentPage - 1) * props.pageSize,
+                            (props.currentPage - 1) * props.pageSize +
+                                props.pageSize
+                        )
+                        .map((job, index) => (
+                            <Box mb={2}>
+                                <JobCard
+                                    author={job.author}
+                                    jobDescription={job.content}
+                                    avatarId={job.avatar_id}
+                                    authorId={job.author_id}
+                                />
+                            </Box>
+                        ))
+                )
             )}
         </Grid>
     );
