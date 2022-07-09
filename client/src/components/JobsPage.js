@@ -115,7 +115,6 @@ export const JobsPage = () => {
                         jobs={jobs}
                         currentPage={currentPage}
                         pageSize={jobsPerPage}
-                        key={Math.random()}
                     />
                     <JobsFooter jobsLength={jobs.length} />
                 </Box>

@@ -25,7 +25,7 @@ const JobsCards = (props) => {
                                 jobDescription={job.content}
                                 avatarId={job.avatar_id}
                                 authorId={job.author_id}
-                                key={job.author + job.content}
+                                key={index}
                             />
                         </Box>
                     ))
