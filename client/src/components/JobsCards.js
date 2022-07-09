@@ -25,10 +25,10 @@ const JobsCards = (props) => {
                                 jobDescription={job.content}
                                 avatarId={job.avatar_id}
                                 authorId={job.author_id}
-                                cardId={
+                                cardId={console.log(
                                     (props.currentPage - 1) * props.pageSize +
-                                    index
-                                }
+                                        index
+                                )}
                                 key={
                                     (props.currentPage - 1) * props.pageSize +
                                     index
