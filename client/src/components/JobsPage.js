@@ -72,6 +72,7 @@ export const JobsPage = () => {
     };
 
     useEffect(() => {
+        console.log(process.env.GET_ALL_JOBS_ENDPOINT);
         getAllJobs();
         //fetchJobs();
     }, []);
