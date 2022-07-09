@@ -31,7 +31,8 @@ const JobsCards = (props) => {
                                 }
                                 cardId={
                                     (props.currentPage - 1) * props.pageSize +
-                                    index
+                                    index +
+                                    500
                                 }
                             />
                         </Box>
