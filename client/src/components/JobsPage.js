@@ -18,6 +18,7 @@ export const JobsPage = () => {
     const [globalJobs, setGlobalJobs] = useState([]);
 
     const getAllJobs = async () => {
+        console.log(process.env);
         setLoading(true);
         await fetch(process.env.GET_ALL_JOBS_ENDPOINT)
             .then((res) => res.json())
