@@ -16,7 +16,7 @@ const cardStyle = {
     height: "19%",
 };
 
-const JobCard = (props) => {
+export const JobCard = (props) => {
     return (
         <Card
             style={cardStyle}
@@ -58,5 +58,3 @@ const JobCard = (props) => {
         </Card>
     );
 };
-
-export default JobCard;
