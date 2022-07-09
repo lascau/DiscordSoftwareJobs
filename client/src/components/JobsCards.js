@@ -29,6 +29,10 @@ const JobsCards = (props) => {
                                     (props.currentPage - 1) * props.pageSize +
                                     index
                                 }
+                                key={
+                                    (props.currentPage - 1) * props.pageSize +
+                                    index
+                                }
                             />
                         </Box>
                     ))
